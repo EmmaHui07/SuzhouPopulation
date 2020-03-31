@@ -1,0 +1,45 @@
+body{
+    background-color: #d4d4d4;
+}
+#content{
+    margin: 30px 15px 0px 15px;
+    background-color: white;
+    overflow: auto;
+    border-radius: 5px;
+}
+/*模态框*/
+.modal {
+    display: none; /* 默认隐藏 */
+    position: fixed; /* 根据浏览器定位 */
+    z-index: 1; /* 放在顶部 */
+    left: 0;
+    top: 0;
+    width: 100%; /* 全宽 */
+    height: 100%; /* 全高 */
+    overflow: auto; /* 允许滚动 */
+    background-color: rgba(0, 0, 0, 0.4); /* 背景色 */
+}
+
+.modal-content {
+    display: flex; /*采用flexbox布局*/
+    flex-direction: column; /*垂直排列*/
+    position: relative;
+    background-color: #fefefe;
+    margin: 10% auto; /*距顶部15% 水平居中*/
+    padding: 20px;
+    border: 1px solid #888;
+    height: 600px;
+    animation: topDown 0.4s; /*自定义动画，从模态框内容上到下出现*/
+}
+
+@keyframes topDown {
+    from {
+        top: -300px;
+        opacity: 0
+    }
+    to {
+        top: 0;
+        opacity: 1
+    }
+}
+

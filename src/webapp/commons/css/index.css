@@ -1,0 +1,236 @@
+html,
+body,
+#mapView {
+    padding: 0;
+    margin: 0;
+}
+#title {
+    width: 100%;
+    height: 90px;
+    position: fixed;
+    top: 0;
+    left: 0;
+    text-align: center;
+    background: url(../image/index/logo.png) no-repeat transparent;
+    z-index: 999;
+}
+
+/*隐藏/显示按钮*/
+#btn_popup:hover {
+    cursor: pointer;
+}
+
+.btn_left_show {
+    width: 24px;
+    height: 49px;
+    content: url(../image/index/shousuo.png);
+    position: fixed;
+    top: 50%;
+    left: 15%;
+    z-index: 999;
+    opacity: 0.8;
+    zoom: 80%;
+    transition: all 1s;
+    -moz-transition: all 1s;
+    -webkit-transition: all 1s;
+    -o-transition: all 1s;
+}
+
+.btn_left_hide {
+    width: 24px;
+    height: 49px;
+    content: url(../image/index/shousuo.png);
+    position: fixed;
+    top: 50%;
+    left: 0;
+    z-index: 999;
+    opacity: 0.8;
+    zoom: 80%;
+    transition: all 1s;
+    -moz-transition: all 1s;
+    -webkit-transition: all 1s;
+    -o-transition: all 1s;
+}
+
+
+/*隐藏/显示右半部分*/
+.right_normal {
+    width: 85%;
+    height: calc(100% - 75px);
+    position: fixed;
+    top: 75px;
+    left: 15%;
+    transition: all 1s;
+    -moz-transition: all 1s;
+    -webkit-transition: all 1s;
+    -o-transition: all 1s;
+}
+
+.right_fullfill {
+    width: 100%;
+    height: calc(100% - 75px);
+    position: fixed;
+    top: 75px;
+    left: 0;
+    transition: all 1s;
+    -moz-transition: all 1s;
+    -webkit-transition: all 1s;
+    -o-transition: all 1s;
+}
+
+@keyframes topDown {
+    from {
+        top: -300px;
+        opacity: 0
+    }
+    to {
+        top: 0;
+        opacity: 1
+    }
+}
+
+/*左侧菜单栏*/
+img {
+    border: none;
+}
+
+dl, dt, dd {
+    display: block;
+    margin: 0;
+    line-height: 40px;
+}
+
+a {
+    text-decoration: none;
+}
+
+.container {
+    width: 100%;
+    height: 100%;
+    margin: auto;
+}
+
+/*left*/
+.leftsidebar_box {
+    width: 15%;
+    overflow: visible !important;
+    position: fixed;
+    top: 90px;
+    left: 0;
+    z-index: 999;
+    height: calc(100% - 88px) !important;
+    background-color: #1b2431;
+    transition: all 1s;
+    -moz-transition: all 1s;
+    -webkit-transition: all 1s;
+    -o-transition: all 1s;
+}
+
+.leftsidebar_box_hide {
+    width: 15%;
+    overflow: visible !important;
+    position: fixed;
+    top: 90px;
+    left: -15%;
+    z-index: 999;
+    height: 100% !important;
+    background-color: #1b2431;
+    transition: all 1s;
+    -moz-transition: all 1s;
+    -webkit-transition: all 1s;
+    -o-transition: all 1s;
+}
+
+.line {
+    height: 2px;
+    width: 100%;
+    background-image: url(../image/index/line_bg.png);
+    background-repeat: repeat-x;
+}
+
+.main_dt {
+    padding-left: 40px;
+    padding-right: 10px;
+    background-repeat: no-repeat;
+    background-position: 10px center;
+    color: #f5f5f5;
+    font-size: 15px;
+    position: relative;
+    line-height: 48px;
+    cursor: pointer;
+}
+
+.main_dd {
+    background-color: #1b2431;
+    padding-left: 40px;
+    color: #f5f5f5;
+    line-height: 40px;
+    cursor: pointer;
+}
+
+.main_dd:hover {
+    background-color: #214f61;
+}
+
+.middle_dd {
+    background-color: #1b2431;
+    padding-left: 40px;
+    color: #f5f5f5;
+    line-height: 40px;
+    cursor: pointer;
+}
+
+#content iframe {
+    width: 100%;
+    height: 100%;
+}
+
+#content {
+    width: 100%;
+    height: 100%;
+}
+
+
+#item_map .main_dt {
+    background-image: url(../image/index/map.png)
+}
+#item_basedata .main_dt {
+    background-image: url(../image/index/basedata.png)
+}
+#item_dataAnalyse .main_dt {
+    background-image: url(../image/index/dataAnalyse.png)
+}
+#item_user .main_dt {
+    background-image: url(../image/index/user.png)
+}
+
+/*.main_dd:hover{background-color: #214f61;}*/
+.main_img {
+    position: absolute;
+    right: 10px;
+    top: 20px;
+}
+
+.middle_img {
+    float: right;
+    padding-right: 10px;
+    padding-top: 12.5px;
+}
+
+.child_dt {
+    font-size: 14px;
+    padding-left: 0px;
+    color: white;
+    cursor: pointer;
+}
+
+.child_dd {
+    font-size: 12px;
+    padding-left: 10px;
+    color: white;
+    cursor: pointer;
+}
+
+
+
+

@@ -1,30 +1,89 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <title>主页</title>
-    <link rel="stylesheet" href="http://47.100.49.112:18080/arcgis/arcgis_js_v414_api/arcgis_js_api/library/4.14/esri/themes/dark/main.css"/>
-    <link rel="stylesheet" href="http://47.100.49.112:18080/arcgis/arcgis_js_v414_api/arcgis_js_api/library/4.14/esri/themes/light/main.css"/>
     <link rel="stylesheet" href="commons/bootstrap/css/bootstrap.css">
     <link rel="stylesheet" href="commons/bootstrap/css/bootstrap-table.min.css">
+    <link rel="stylesheet" href="commons/bootstrap/css/font-awesome.css">
     <script src="commons/js/jquery/jquery.min.js"></script>
     <script type="text/javascript" src="commons/bootstrap/js/bootstrap.min.js"></script>
-    <script type="text/javascript" src="http://47.100.49.112:18080/arcgis/arcgis_js_v414_api/arcgis_js_api/library/4.14/init.js"></script>
 
+    <link rel="stylesheet" href="commons/css/config.css">
     <link rel="stylesheet" href="commons/css/index.css">
     <script type="text/javascript" src="commons/js/index.js"></script>
+    <script type="text/javascript" src="commons/js/config.js"></script>
+    <script type="text/javascript" src="commons/js/user.js"></script>
+
 </head>
+
 <body>
-    <!--title-->
-    <div id="title" style="height: 100px;width: 100%"></div>
 
-    <!-- -->
-    <div id="left_bar">
+    <!--标题栏-->
+    <div id="title">
+        <h1 style="float: left;margin-left: 10px;color: white">苏州市人口地理信息系统</h1>
 
+        <nav>
+            <ul class="nav navbar-nav navbar-right">
+                <li class="">
+                    <a href="javascript:;"
+                       style="color: white !important;background-color: transparent "
+                       class="user-profile dropdown-toggle" data-toggle="dropdown"
+                       aria-expanded="false">
+                        <img src="commons/image/login/ren.png" alt="">欢迎
+                        <span id="userName">admin</span>
+                        <span class="fa fa-angle-down"></span>
+                    </a>
+                    <ul class="dropdown-menu dropdown-usermenu pull-right" style="top: 90px;">
+                        <li>
+                            <a href="login.html">
+                                <h5><i class="fa fa-sign-out pull-right"></i></h5>
+                                <h5>退出系统</h5>
+                            </a>
+                        </li>
+                    </ul>
+                </li>
+            </ul>
+        </nav>
     </div>
-    <!--地图容器-->
-    <div id="mapView">
+    <!--左半部分(菜单)-->
+    <div id="left_part" style="overflow:auto">
+        <div id="leftbar" class="leftsidebar_box">
+            <div class="line"></div>
+            <!--地图-->
+            <dl class="main_dl" id="item_map">
+                <dt class="main_dt" onclick="showMap()">地图</dt>
+            </dl>
+            <!--数据台账-->
+            <dl class="main_dl" id="item_basedata">
+                <dt class="main_dt">数据台账<img class="main_img" src="commons/image/index/select_xl01.png"></dt>
+                <dd class="main_dd" onclick="changeIframe('普查数据台账')">普查数据台账</dd>
+                <dd class="main_dd" onclick="changeIframe('统计数据台账')">统计数据台账</dd>
+            </dl>
+            <!--统计分析-->
+            <dl class="main_dl" id="item_dataAnalyse">
+                <dt class="main_dt" onclick="changeIframe('统计分析')">统计分析<img class="main_img" src="commons/image/index/select_xl01.png"></dt>
+            </dl>
+            <!--系统管理-->
+            <dl class="main_dl" id="item_user">
+                <dt class="main_dt">系统管理<img class="main_img" src="commons/image/index/select_xl01.png"></dt>
+                <dd class="main_dd">个人信息</dd>
+                <dd class="main_dd">用户管理</dd>
+            </dl>
+        </div>
 
+        <!--左半部分收起按钮-->
+        <div id="btn_popup" class="btn_left_show" onclick="menuController()"></div>
     </div>
+    <!--右半部分-->
+    <div id="right_part" class="right_normal">
+        <div id="content">
+            <iframe id="iframe_map" frameborder="0" src="map.html" style="display: block"></iframe>
+            <iframe id="iframe"     frameborder="0" style="display: none"></iframe>
+        </div>
+    </div>
+
 </body>
+
 </html>

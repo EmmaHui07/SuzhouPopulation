@@ -1,0 +1,38 @@
+*{ margin: 0;padding: 0;}
+li,ul{list-style: none;}
+img,input{border: 0;}
+a{text-decoration: none;}
+body{font-family: "微软雅黑","Microsoft Yahei",Arial,Helvetica,sans-serif,"宋体";font-size: 14px;color: #515151;}
+body input, body textarea {font-family: "微软雅黑","Microsoft Yahei",Arial,Helvetica,sans-serif,"宋体";background-color: white;outline: none;}
+
+.mainForm{margin-top: 100px;width: 360px;margin: 100px auto 0px;overflow: hidden;background: #fff;padding:20px;}
+.number{font-size: 20px;margin-left: -5px;margin-bottom: 30px;width: 350px;text-align: center;}
+.number a{color: #515151;}
+.linkABlue:visited {color: #00a7ea;}
+.linkAGray:hover{color: #2b2b2b;}
+.number span{color: #d9d9d9;display: inline-block;border: 1px solid #dadada;border-left: 1px;height: 16px;line-height: 20px;margin-right: 50px;margin-left: 50px;}
+.normalInput{float: left;position: relative;display: inline-block;padding: 0px 10px;width: 320px;height: 50px;line-height: 22px;font-size: 16px;margin-bottom: 20px;border: 1px solid #dadada;outline: none;color: #474747;overflow: visible;}
+.error{display: none;margin-left: 0px;margin-bottom: 20px;color: red;float: left;}
+.errorC{ margin-bottom: 10px;border-color: red;color: red;}
+.normalInput input{font-size: 16px;width: 100%;height: 45px;}
+.pwdBtnShow{outline: none;position: relative;display: inline-block;width: 30px;height: 30px;cursor: pointer;overflow: hidden;float: right;margin-right: 5px;}
+#pwdBtn {margin-top: 13px;margin-bottom: 10px;}
+.pwdBtnShow i{background-image:url("../image/login/elements.png");background-position: -30px -93px; background-repeat: no-repeat;}
+
+
+.formLine{color: #d9d9d9;height: 40px;display: inline-block;border-left: 1px solid #dadada;position: absolute;right: 100px;top: 5px;}
+#getKey{width: 80px;border: none;outline: none;height: 50px;line-height: 50px;font-size: 16px;position: absolute;right: 10px;top: 0px;}
+.i_icon{display: inline-block;width: 100%;height: 100%;overflow: hidden;}
+.normalInput .password{float: left;width: 200px;}
+.normalInput .password1{float: left;width: 200px;display: none;}
+
+.rememberField{margin-bottom: 30px;height: 20px;line-height: 20px;float: left;display: block;}
+.fullBtnBlue{display: inline-block;height: 50px;width: 320px;font-size: 20px;line-height: 50px;text-align: center;margin-bottom: 20px;outline: none;cursor: pointer;background-color: #32a5e7;color: #fff;}
+
+/*mainForm2*/
+.linkAGray2:visited {color: #00a7ea;}
+.linkABlue2:hover{color: #2b2b2b;}
+.grayTip {height: 50px;line-height: 50px;vertical-align: top;display: inline-block;color: #7f7f7f;}
+/*mainForm2end*/
+.mainForm2{display: none;}
+

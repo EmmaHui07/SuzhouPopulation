@@ -1,0 +1,1 @@
+var g_BasePath = "http://47.100.49.112:8088/fishser/";

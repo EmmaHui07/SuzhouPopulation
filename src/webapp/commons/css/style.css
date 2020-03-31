@@ -1,0 +1,236 @@
+/* -------------------------------- 
+
+Primary style
+
+-------------------------------- */
+*, *::after, *::before {
+  box-sizing: border-box;
+}
+
+a {
+  color: #a0f6aa;
+  text-decoration: none;
+}
+
+h1 {
+  text-align: center;
+  width: 90%;
+  margin: 2em auto 0;
+  font-size: 20px;
+  color: #507b55;
+  font-weight: bold;
+}
+@media only screen and (min-width: 600px) {
+  h1 {
+    font-size: 30px;
+  }
+}
+
+input {
+  font-family: "Jaldi", sans-serif;
+  font-size: 15px;
+}
+
+/* -------------------------------- 
+
+Main Components 
+
+-------------------------------- */
+.cd-accordion-menu {
+  width: 100%;
+  max-width: 600px;
+  background: white;
+  box-shadow: 0 4px 10px #d4d4d4;
+}
+.cd-accordion-menu ul {
+  display: none;
+}
+.cd-accordion-menu li {
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+.cd-accordion-menu input[type=checkbox] {
+  /* hide native checkbox */
+  position: absolute;
+  opacity: 0;
+}
+.cd-accordion-menu label, .cd-accordion-menu a {
+  position: relative;
+  display: block;
+  padding: 5px 5px 5px 5px;
+  background: white;
+  box-shadow: inset 0 -1px #d4d4d4;
+  color: #547aa9;
+  font-size: 13px;
+}
+.no-touch .cd-accordion-menu label:hover, .no-touch .cd-accordion-menu a:hover {
+  background: #ff5440;
+}
+.cd-accordion-menu label::before, .cd-accordion-menu label::after, .cd-accordion-menu a::after {
+  /* icons */
+  content: '';
+  display: inline-block;
+  width: 16px;
+  height: 16px;
+  position: absolute;
+  top: 50%;
+  -webkit-transform: translateY(-50%);
+  -moz-transform: translateY(-50%);
+  -ms-transform: translateY(-50%);
+  -o-transform: translateY(-50%);
+  transform: translateY(-50%);
+}
+.cd-accordion-menu label {
+  cursor: pointer;
+}
+.cd-accordion-menu label::before, .cd-accordion-menu label::after {
+  background-image: url(../image/cd-icons.svg);
+  background-repeat: no-repeat;
+}
+.cd-accordion-menu label::before {
+  /* arrow icon */
+  right: 18px;
+  background-position: 0 0;
+  -webkit-transform: translateY(-50%) rotate(-90deg);
+  -moz-transform: translateY(-50%) rotate(-90deg);
+  -ms-transform: translateY(-50%) rotate(-90deg);
+  -o-transform: translateY(-50%) rotate(-90deg);
+  transform: translateY(-50%) rotate(-90deg);
+}
+.cd-accordion-menu label::after {
+  /* folder icons */
+  right: 41px;
+  background-position: -16px 0;
+}
+.cd-accordion-menu a::after {
+  /* image icon */
+  right: 36px;
+  background: url(../image/cd-icons.svg) no-repeat -48px 0;
+}
+.cd-accordion-menu input[type=checkbox]:checked + label::before {
+  /* rotate arrow */
+  -webkit-transform: translateY(-50%);
+  -moz-transform: translateY(-50%);
+  -ms-transform: translateY(-50%);
+  -o-transform: translateY(-50%);
+  transform: translateY(-50%);
+}
+.cd-accordion-menu input[type=checkbox]:checked + label::after {
+  /* show open folder icon if item is checked */
+  background-position: -32px 0;
+}
+.cd-accordion-menu input[type=checkbox]:checked + label + ul,
+.cd-accordion-menu input[type=checkbox]:checked + label:nth-of-type(n) + ul {
+  /* use label:nth-of-type(n) to fix a bug on safari (<= 8.0.8) with multiple adjacent-sibling selectors*/
+  /* show children when item is checked */
+  display: block;
+}
+.cd-accordion-menu ul label,
+.cd-accordion-menu ul a {
+  background: #ffffff;
+  box-shadow: inset 0 -1px #f2f2f2;
+  padding-left: 20px;
+}
+.no-touch .cd-accordion-menu ul label:hover, .no-touch
+.cd-accordion-menu ul a:hover {
+  background: #3c3f45;
+}
+.cd-accordion-menu > li:last-of-type > label,
+.cd-accordion-menu > li:last-of-type > a,
+.cd-accordion-menu > li > ul > li:last-of-type label,
+.cd-accordion-menu > li > ul > li:last-of-type a {
+  /*box-shadow: none;*/
+  box-shadow: inset 0 -1px #f2f2f2;
+}
+/*右侧箭头*/
+.cd-accordion-menu ul label::before {
+  right: 36px;
+}
+/*区县级别右侧文件夹图标隐藏*/
+.cd-accordion-menu ul label::after,
+.cd-accordion-menu ul a::after {
+  /*left: 59px;*/
+  display: none;
+}
+/*镇级别title位置*/
+.cd-accordion-menu ul ul label,
+.cd-accordion-menu ul ul a {
+  padding-left: 50px;
+}
+.cd-accordion-menu ul ul label::before {
+  right: 54px;
+}
+.cd-accordion-menu ul ul label::after,
+.cd-accordion-menu ul ul a::after {
+  right: 77px;
+}
+.cd-accordion-menu ul ul ul label,
+.cd-accordion-menu ul ul ul a {
+  padding-left: 118px;
+}
+.cd-accordion-menu ul ul ul label::before {
+  right: 72px;
+}
+.cd-accordion-menu ul ul ul label::after,
+.cd-accordion-menu ul ul ul a::after {
+  right: 95px;
+}
+@media only screen and (min-width: 600px) {
+  /*苏州市 title*/
+  .cd-accordion-menu label, .cd-accordion-menu a {
+    padding: 5px 5px 5px 20px;
+    font-size: 18px;
+  }
+  /*苏州市 箭头位置 隐藏文件夹图标*/
+  .cd-accordion-menu label::before {
+    right: 24px;
+  }
+  .cd-accordion-menu label::after {
+    right: 53px;
+    display: none;
+  }
+  /*区 title的位置*/
+  .cd-accordion-menu ul label,
+  .cd-accordion-menu ul a {
+    padding-left: 30px;
+  }
+  /*区 前面的箭头位置*/
+  .cd-accordion-menu ul label::before {
+    right: 25px;
+  }
+  .cd-accordion-menu ul label::after,
+  .cd-accordion-menu ul a::after {
+    right: 50px;
+  }
+  /*镇 title位置*/
+  .cd-accordion-menu ul ul label,
+  .cd-accordion-menu ul ul a {
+    padding-left: 60px;
+  }
+  .cd-accordion-menu ul ul label::before {
+    left: 72px;
+  }
+  .cd-accordion-menu ul ul label::after,
+  .cd-accordion-menu ul ul a::after {
+    left: 101px;
+  }
+  .cd-accordion-menu ul ul ul label,
+  .cd-accordion-menu ul ul ul a {
+    padding-left: 154px;
+  }
+  .cd-accordion-menu ul ul ul label::before {
+    left: 96px;
+  }
+  .cd-accordion-menu ul ul ul label::after,
+  .cd-accordion-menu ul ul ul a::after {
+    left: 125px;
+  }
+}
+.cd-accordion-menu.animated label::before {
+  /* this class is used if you're using jquery to animate the accordion */
+  -webkit-transition: -webkit-transform 0.3s;
+  -moz-transition: -moz-transform 0.3s;
+  transition: transform 0.3s;
+}

@@ -1,0 +1,36 @@
+html,
+body,
+#mapView {
+    padding: 0;
+    margin: 0;
+    height: 100%;
+    width: 100%;
+}
+#areaMenu{
+    width: 300px;
+    height: 100%;
+    position: absolute;
+    right: 0;
+    top: 0;
+    background-color: #d4d4d4;
+    opacity: 0.8;
+    border-radius: 5px;
+    z-index: 999;
+}
+.title{
+    color: white;margin-left: 10px;line-height: 60px;font-size: 20px;font-weight: bold;font-family: 'Microsoft Yahei'
+}
+.div_title{
+    background-color: #547aa9;height: 60px;width:100%;position: absolute;top:0;
+}
+.level_shiqu{
+    background-color:white;height: 50px;width:100%;
+}
+.level_shiqu label{
+    color: #547aa9;
+    font-weight: bold;
+    font-size: 16px;
+    margin-left: 10px;
+    font-family: 'Microsoft Yahei';
+    line-height: 50px;
+}
