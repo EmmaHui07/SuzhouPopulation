@@ -23,6 +23,14 @@ body,
 .div_title{
     background-color: #547aa9;height: 60px;width:100%;position: absolute;top:0;
 }
+#layersController{
+    position: absolute;
+    top:60px;
+    bottom: 0;
+    width:100%;
+    overflow: auto;
+
+}
 .level_shiqu{
     background-color:white;height: 50px;width:100%;
 }

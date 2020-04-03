@@ -3,8 +3,18 @@
 <head>
     <meta charset="UTF-8">
     <title>地图</title>
-    <link rel="stylesheet" href="https://js.arcgis.com/4.14/esri/themes/light/main.css"/>
-    <script src="https://js.arcgis.com/4.14/"></script>
+    <!-- ArcGIS API for JavaScript CSS-->
+    <link rel="stylesheet" href="http://47.100.49.112:18080/arcgis/arcgis_js_v414_api/arcgis_js_api/library/4.14/esri/themes/dark/main.css"/>
+    <link rel="stylesheet" href="http://47.100.49.112:18080/arcgis/arcgis_js_v414_api/arcgis_js_api/library/4.14/esri/themes/light/main.css"/>
+    <!--<link rel="stylesheet" href="https://js.arcgis.com/4.14/esri/themes/light/main.css"/>-->
+    <!--<link rel="stylesheet" href="http://localhost/arcgis_js_v414_api/arcgis_js_api/library/4.14/esri/css/main.css">-->
+
+    <!-- ArcGIS API for JavaScript -->
+    <script type="text/javascript" src="http://47.100.49.112:18080/arcgis/arcgis_js_v414_api/arcgis_js_api/library/4.14/init.js"></script>
+    <!--<script type="text/javascript" src="https://js.arcgis.com/4.14"></script>-->
+    <!--<script type="text/javascript" src="http://localhost/arcgis_js_v414_api/arcgis_js_api/library/4.14/init.js"></script>-->
+
+
     <script src="commons/js/jquery/jquery.min.js"></script>
     <link rel="stylesheet" href="commons/css/config.css">
     <link rel="stylesheet" href="commons/css/map.css">
@@ -13,52 +23,63 @@
     <script type="text/javascript" src="commons/js/main.js"></script>
     <script type="text/javascript" src="commons/js/config.js"></script>
     <script type="text/javascript" src="commons/js/map.js"></script>
-
+    <style>
+        html,
+        body,
+        #viewDiv {
+            height: 100%;
+            width: 100%;
+            margin: 0;
+            padding: 0;
+        }
+        #optionsDiv {
+            background-color: white;
+            color: black;
+            padding: 6px;
+            max-width: 400px;
+        }
+    </style>
 </head>
 <body>
 <div id="mapView"></div>
+<div id="optionsDiv" class="esri-widget" style="display: none">
+    <p>
+        Select a query type and click a point on the map to view the results.
+    </p>
+    <select id="query-type" class="esri-widget">
+        <option value="basic">Basic Query</option>
+        <option value="distance">Query By Distance</option>
+    </select>
+</div>
 
 <div id="areaMenu">
     <div class="div_title">
         <label class="title">图层选择</label>
-        <div id="layersController">
-            <div class="level_shiqu">
-                <ul class="cd-accordion-menu animated">
-                    <li class="has-children">
-                        <input type="checkbox" name ="group-1" id="group-1" checked>
-                        <label for="group-1">苏州市</label>
-                        <ul>
-                            <li class="has-children">
-                                <input type="checkbox" name ="sub-group-1" id="sub-group-1">
-                                <label for="sub-group-1">吴中区</label>
+    </div>
+    <div id="layersController">
+        <div class="level_shiqu">
+            <ul class="cd-accordion-menu animated">
+                <li class="has-children">
+                    <input type="checkbox" name ="group-1" id="group-1" checked>
+                    <label for="group-1">苏州市</label>
+                    <ul id="qulist">
+                        <!--&lt;!&ndash;吴中区&ndash;&gt;-->
+                        <!--<li class="has-children">-->
+                        <!--<input type="checkbox" name ="sub-group-1" id="sub-group-1">-->
+                        <!--<label for="sub-group-1">吴中区</label>-->
 
-                                <ul>
-                                    <li><a href="#0" >镇1</a></li>
-                                    <li><a href="#0" >镇2</a></li>
-                                    <li><a href="#0" >镇3</a></li>
-                                </ul>
-                            </li>
-                            <li class="has-children">
-                                <input type="checkbox" name ="sub-group-2" id="sub-group-2">
-                                <label for="sub-group-2">姑苏区</label>
+                        <!--<ul>-->
+                        <!--<li><a href="#0" >镇1</a></li>-->
+                        <!--<li><a href="#0" >镇2</a></li>-->
+                        <!--<li><a href="#0" >镇3</a></li>-->
+                        <!--</ul>-->
+                        <!--</li>-->
 
-                                <ul>
-                                    <li><a href="#0">镇1</a></li>
-                                    <li><a href="#0">镇2</a></li>
-                                    <li><a href="#0">镇3</a></li>
-                                </ul>
-                            </li>
-                            <li>
-                                <label>昆山市</label>
-                            </li>
-                            <li>
-                                <label>太仓市</label>
-                            </li>
-                        </ul>
-                    </li>
-                </ul>
+                        <!--<li><label>13</label></li>-->
+                    </ul>
+                </li>
+            </ul>
 
-            </div>
         </div>
     </div>
 
