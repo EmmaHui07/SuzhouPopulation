@@ -1,0 +1,519 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>统计数据台账_region表</title>
+    <script src="commons/js/jquery/jquery.min.js"></script>
+    <link rel="stylesheet" href="commons/css/config.css">
+    <link rel="stylesheet" href="commons/css/data.css">
+    <link rel="stylesheet" href="commons/bootstrap/css/bootstrap.css">
+    <link rel="stylesheet" href="commons/bootstrap/css/bootstrap-table.min.css">
+    <link rel="stylesheet" href="commons/bootstrap/css/bootstrap-datetimepicker.css">
+    <link rel="stylesheet" href="commons/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="commons/bootstrap/css/font-awesome.min.css">
+    <link rel="stylesheet" href="commons/bootstrap/bootstrap-datepicker/bootstrap.css">
+    <link rel="stylesheet" href="commons/bootstrap/css/custom.min.css">
+    <link rel="stylesheet" href="commons/bootstrap/css/bootstrapValidator.css">
+
+    <script src="commons/bootstrap/js/bootstrap-table.min.js"></script>
+    <script src="commons/bootstrap/js/bootstrap-datetimepicker.js"></script>
+    <script src="commons/bootstrap/js/bootstrap-datetimepicker.zh-CN.js"></script>
+    <script src="commons/bootstrap/js/bootstrap-table-zh-CN.min.js"></script>
+    <script src="commons/bootstrap/js/bootstrap.min.js"></script>
+    <script src="commons/bootstrap/js/bootstrapValidator.js"></script>
+
+    <script type="text/javascript" src="commons/js/config.js"></script>
+    <script type="text/javascript" src="commons/js/regionData.js"></script>
+</head>
+<body>
+<div class="content">
+    <div id="toolbar" class="btn-group">
+        <button id="button_add" type="button" class="btn btn-default" data-toggle="modal" data-target="#myModal">
+            <span class="glyphicon glyphicon-plus" aria-hidden="true">新增</span>
+        </button>
+        <input class="btn btn-default"
+               name="search_year"
+               id="search_year"
+               type="text"
+               style="text-align: left;cursor:text"
+               placeholder="请输入年份"/>
+        <button id="button_search" type="button" class="btn btn-default">
+            <span class="glyphicon glyphicon-search" aria-hidden="true">搜索</span>
+        </button>
+    </div>
+
+    <div class="panel panel-default">
+        <div class="panel-body">
+            <table id="tb_regionData"></table>
+        </div>
+    </div>
+
+</div>
+
+<!--详细信息-->
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+     aria-hidden="true">
+    <div class="modal-dialog" style="width: 50%">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+                    &times;
+                </button>
+                <h4 class="modal-title">
+                    详细信息
+                </h4>
+            </div>
+            <div class="modal-body" style="display: block;overflow: auto;">
+                <!--年份  区-->
+                <div class="infobox" style="margin-top: 20px">
+                    <div class="title_leftpart">
+                        <div class="info_title"><span>年份：</span></div>
+                        <div class="info_content"><span id="detail_year"> </span></div>
+                    </div>
+                    <div class="title_rightpart">
+                        <div class="info_title"><span>区：</span></div>
+                        <div class="info_content"><span id="detail_district"> </span></div>
+                    </div>
+                </div>
+
+                <!--从业人员(万人) 第一产业(万人)-->
+                <div class="infobox" >
+                    <div class="title_leftpart">
+                        <div class="info_title"><span>从业人员(万人)：</span></div>
+                        <div class="info_content"><span id="detail_cyry"> </span></div>
+                    </div>
+                    <div class="title_rightpart">
+                        <div class="info_title"><span>第一产业(万人)：</span></div>
+                        <div class="info_content"><span id="detail_dycy"> </span></div>
+                    </div>
+                </div>
+
+                <!--第二产业(万人) 第三产业(万人)-->
+                <div class="infobox" >
+                    <div class="title_leftpart">
+                        <div class="info_title"><span>第二产业(万人)：</span></div>
+                        <div class="info_content"><span id="detail_decy"> </span></div>
+                    </div>
+                    <div class="title_rightpart">
+                        <div class="info_title"><span>第三产业(万人)：</span></div>
+                        <div class="info_content"><span id="detail_dscy"> </span></div>
+                    </div>
+                </div>
+
+                <!--常住人口(万人) 城镇人口比重-->
+                <div class="infobox" >
+                    <div class="title_leftpart">
+                        <div class="info_title"><span>常住人口(万人)：</span></div>
+                        <div class="info_content"><span id="detail_czrk"> </span></div>
+                    </div>
+                    <div class="title_rightpart">
+                        <div class="info_title"><span>城镇人口比重：</span></div>
+                        <div class="info_content"><span id="detail_czrkbz"> </span></div>
+                    </div>
+                </div>
+
+                <!--总户数(户) 总人口(人)-->
+                <div class="infobox" >
+                    <div class="title_leftpart">
+                        <div class="info_title"><span>总户数(户)：</span></div>
+                        <div class="info_content"><span id="detail_zhs"> </span></div>
+                    </div>
+                    <div class="title_rightpart">
+                        <div class="info_title"><span>总人口(人)：</span></div>
+                        <div class="info_content"><span id="detail_zrk"> </span></div>
+                    </div>
+                </div>
+
+                <!--男(人) 女(人)-->
+                <div class="infobox" >
+                    <div class="title_leftpart">
+                        <div class="info_title"><span>男(人)：</span></div>
+                        <div class="info_content"><span id="detail_man"> </span></div>
+                    </div>
+                    <div class="title_rightpart">
+                        <div class="info_title"><span>女(人)：</span></div>
+                        <div class="info_content"><span id="detail_lady"> </span></div>
+                    </div>
+                </div>
+
+                <!--出生人数(人) 出生率(%)-->
+                <div class="infobox" >
+                    <div class="title_leftpart">
+                        <div class="info_title"><span>出生人数(人)：</span></div>
+                        <div class="info_content"><span id="detail_csrs"> </span></div>
+                    </div>
+                    <div class="title_rightpart">
+                        <div class="info_title"><span>出生率(%)：</span></div>
+                        <div class="info_content"><span id="detail_csl"> </span></div>
+                    </div>
+                </div>
+
+                <!--死亡人数(人) 死亡率(%)-->
+                <div class="infobox" >
+                    <div class="title_leftpart">
+                        <div class="info_title"><span>死亡人数(人)：</span></div>
+                        <div class="info_content"><span id="detail_swrs"> </span></div>
+                    </div>
+                    <div class="title_rightpart">
+                        <div class="info_title"><span>死亡率(%)：</span></div>
+                        <div class="info_content"><span id="detail_swl"> </span></div>
+                    </div>
+                </div>
+
+                <!--自然增长人数(人) 自然增长率(%)-->
+                <div class="infobox" >
+                    <div class="title_leftpart">
+                        <div class="info_title"><span>自然增长人数(人)：</span></div>
+                        <div class="info_content"><span id="detail_zrzzrs"> </span></div>
+                    </div>
+                    <div class="title_rightpart">
+                        <div class="info_title"><span>自然增长率(%)：</span></div>
+                        <div class="info_content"><span id="detail_zrzzl"> </span></div>
+                    </div>
+                </div>
+
+                <!--迁入人数(人) 迁出人数(人)-->
+                <div class="infobox" >
+                    <div class="title_leftpart">
+                        <div class="info_title"><span>迁入人数(人)：</span></div>
+                        <div class="info_content"><span id="detail_qres"> </span></div>
+                    </div>
+                    <div class="title_rightpart">
+                        <div class="info_title"><span>迁出人数(人)：</span></div>
+                        <div class="info_content"><span id="detail_qcrs"> </span></div>
+                    </div>
+                </div>
+
+                <!--准予结婚登记(对) 初婚(人)-->
+                <div class="infobox" >
+                    <div class="title_leftpart">
+                        <div class="info_title"><span>准予结婚登记(对)：</span></div>
+                        <div class="info_content"><span id="detail_zyjhdj"> </span></div>
+                    </div>
+                    <div class="title_rightpart">
+                        <div class="info_title"><span>初婚(人)：</span></div>
+                        <div class="info_content"><span id="detail_ch"> </span></div>
+                    </div>
+                </div>
+
+                <!--再婚(人) 离婚(人)-->
+                <div class="infobox" >
+                    <div class="title_leftpart">
+                        <div class="info_title"><span>再婚(人)：</span></div>
+                        <div class="info_content"><span id="detail_zh"> </span></div>
+                    </div>
+                    <div class="title_rightpart">
+                        <div class="info_title"><span>离婚(人)：</span></div>
+                        <div class="info_content"><span id="control-label"> </span></div>
+                    </div>
+                </div>
+
+                <!--女性晚婚率(%) 育龄妇女人数(万人)-->
+                <div class="infobox" >
+                    <div class="title_leftpart">
+                        <div class="info_title"><span>女性晚婚率(%)：</span></div>
+                        <div class="info_content"><span id="detail_nxwhl"> </span></div>
+                    </div>
+                    <div class="title_rightpart">
+                        <div class="info_title"><span>育龄妇女人数(万人)：</span></div>
+                        <div class="info_content"><span id="detail_ylfvrs-label"> </span></div>
+                    </div>
+                </div>
+
+                <!--计划生育率(%) 独生子女证有效领证率(%)-->
+                <div class="infobox" >
+                    <div class="title_leftpart">
+                        <div class="info_title"><span>计划生育率(%)：</span></div>
+                        <div class="info_content"><span id="detail_jhsyl"> </span></div>
+                    </div>
+                    <div class="title_rightpart">
+                        <div class="info_title"><span>独生子女证有效领证率(%)：</span></div>
+                        <div class="info_content"><span id="detail_dsziyxlzl"> </span></div>
+                    </div>
+                </div>
+
+                <!--节育率(%) 总和生育率(%)-->
+                <div class="infobox" >
+                    <div class="title_leftpart">
+                        <div class="info_title"><span>节育率(%)：</span></div>
+                        <div class="info_content"><span id="detail_jyl"> </span></div>
+                    </div>
+                    <div class="title_rightpart">
+                        <div class="info_title"><span>总和生育率(%)：</span></div>
+                        <div class="info_content"><span id="detail_zhsyl"> </span></div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>
+
+<!--新增数据-->
+<div class="modal fade" id="myModal1" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog" style="width: 50%">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+                    &times;
+                </button>
+                <h4 class="modal-title" id="myModalLabel">
+                    新增数据
+                </h4>
+            </div>
+            <div class="modal-body" style="overflow: auto">
+                <form class="form-horizontal" id="regionForm" method="post" enctype="multipart/form-data"
+                      target="framFile">
+                    <div class="row">
+                        <div class="col-sm-4" style="padding-left:0;padding-right: 0;">
+                            <label class="control-label">年份：</label>
+                        </div>
+                        <div class="col-sm-8 form-group">
+                            <input type="text" class="form-control" id="year" name="year" placeholder="">
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-sm-4" style="padding-left:0;padding-right: 0;">
+                            <label class="control-label">区：</label>
+                        </div>
+                        <div class="col-sm-8 form-group">
+                            <input type="text" class="form-control" id="district" name="district" placeholder="">
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-sm-4" style="padding-left:0;padding-right: 0;">
+                            <label class="control-label">从业人员(万人)：</label>
+                        </div>
+                        <div class="col-sm-8 form-group">
+                            <input type="text" class="form-control" id="cyry" name="cyry" placeholder="">
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-sm-4" style="padding-left:0;padding-right: 0;">
+                            <label class="control-label">第一产业(万人)：</label>
+                        </div>
+                        <div class="col-sm-8 form-group">
+                            <input type="text" class="form-control" id="dycy" name="dycy" placeholder="">
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-sm-4" style="padding-left:0;padding-right: 0;">
+                            <label class="control-label">第二产业(万人)：</label>
+                        </div>
+                        <div class="col-sm-8 form-group">
+                            <input type="text" class="form-control" id="decy" name="decy" placeholder="">
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-sm-4" style="padding-left:0;padding-right: 0;">
+                            <label class="control-label">第三产业(万人)：</label>
+                        </div>
+                        <div class="col-sm-8 form-group">
+                            <input type="text" class="form-control" id="dscy" name="dscy" placeholder="">
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-sm-4" style="padding-left:0;padding-right: 0;">
+                            <label class="control-label">常住人口(万人)：</label>
+                        </div>
+                        <div class="col-sm-8 form-group">
+                            <input type="text" class="form-control" id="czrk" name="czrk" placeholder="">
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-sm-4" style="padding-left:0;padding-right: 0;">
+                            <label class="control-label">城镇人口比重：</label>
+                        </div>
+                        <div class="col-sm-8 form-group">
+                            <input type="text" class="form-control" id="czrkbz" name="czrkbz" placeholder="">
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-sm-4" style="padding-left:0;padding-right: 0;">
+                            <label class="control-label">总户数(户)：</label>
+                        </div>
+                        <div class="col-sm-8 form-group">
+                            <input type="text" class="form-control" id="zhs" name="zhs" placeholder="">
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-sm-4" style="padding-left:0;padding-right: 0;">
+                            <label class="control-label">总人口(人)：</label>
+                        </div>
+                        <div class="col-sm-8 form-group">
+                            <input type="text" class="form-control" id="zrk" name="zrk" placeholder="">
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-sm-4" style="padding-left:0;padding-right: 0;">
+                            <label class="control-label">男(人)：</label>
+                        </div>
+                        <div class="col-sm-8 form-group">
+                            <input type="text" class="form-control" id="man" name="man" placeholder="">
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-sm-4" style="padding-left:0;padding-right: 0;">
+                            <label class="control-label">女(人)：</label>
+                        </div>
+                        <div class="col-sm-8 form-group">
+                            <input type="text" class="form-control" id="lady" name="lady" placeholder="">
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-sm-4" style="padding-left:0;padding-right: 0;">
+                            <label class="control-label">出生人数(人)：</label>
+                        </div>
+                        <div class="col-sm-8 form-group">
+                            <input type="text" class="form-control" id="csrs" name="csrs" placeholder="">
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-sm-4" style="padding-left:0;padding-right: 0;">
+                            <label class="control-label">出生率(%)：</label>
+                        </div>
+                        <div class="col-sm-8 form-group">
+                            <input type="text" class="form-control" id="csl" name="csl" placeholder="">
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-sm-4" style="padding-left:0;padding-right: 0;">
+                            <label class="control-label">死亡人数(人)：</label>
+                        </div>
+                        <div class="col-sm-8 form-group">
+                            <input type="text" class="form-control" id="swrs" name="swrs" placeholder="">
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-sm-4" style="padding-left:0;padding-right: 0;">
+                            <label class="control-label">死亡率(%)：</label>
+                        </div>
+                        <div class="col-sm-8 form-group">
+                            <input type="text" class="form-control" id="swl" name="swl" placeholder="">
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-sm-4" style="padding-left:0;padding-right: 0;">
+                            <label class="control-label">自然增长人数(人)：</label>
+                        </div>
+                        <div class="col-sm-8 form-group">
+                            <input type="text" class="form-control" id="zrzzrs" name="zrzzrs" placeholder="">
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-sm-4" style="padding-left:0;padding-right: 0;">
+                            <label class="control-label">自然增长率(%)：</label>
+                        </div>
+                        <div class="col-sm-8 form-group">
+                            <input type="text" class="form-control" id="zrzzl" name="zrzzl" placeholder="">
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-sm-4" style="padding-left:0;padding-right: 0;">
+                            <label class="control-label">迁入人数(人)：</label>
+                        </div>
+                        <div class="col-sm-8 form-group">
+                            <input type="text" class="form-control" id="qres" name="qres" placeholder="">
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-sm-4" style="padding-left:0;padding-right: 0;">
+                            <label class="control-label">迁出人数(人)：</label>
+                        </div>
+                        <div class="col-sm-8 form-group">
+                            <input type="text" class="form-control" id="qcrs" name="qcrs" placeholder="">
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-sm-4" style="padding-left:0;padding-right: 0;">
+                            <label class="control-label">准予结婚登记(对)：</label>
+                        </div>
+                        <div class="col-sm-8 form-group">
+                            <input type="text" class="form-control" id="zyjhdj" name="zyjhdj" placeholder="">
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-sm-4" style="padding-left:0;padding-right: 0;">
+                            <label class="control-label">初婚(人)：</label>
+                        </div>
+                        <div class="col-sm-8 form-group">
+                            <input type="text" class="form-control" id="ch" name="ch" placeholder="">
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-sm-4" style="padding-left:0;padding-right: 0;">
+                            <label class="control-label">再婚(人)：</label>
+                        </div>
+                        <div class="col-sm-8 form-group">
+                            <input type="text" class="form-control" id="zh" name="zh" placeholder="">
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-sm-4" style="padding-left:0;padding-right: 0;">
+                            <label class="control-label">离婚(人)：</label>
+                        </div>
+                        <div class="col-sm-8 form-group">
+                            <input type="text" class="form-control" id="lh" name="lh" placeholder="">
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-sm-4" style="padding-left:0;padding-right: 0;">
+                            <label class="control-label">女性晚婚率(%)：</label>
+                        </div>
+                        <div class="col-sm-8 form-group">
+                            <input type="text" class="form-control" id="nxwhl" name="nxwhl" placeholder="">
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-sm-4" style="padding-left:0;padding-right: 0;">
+                            <label class="control-label">育龄妇女人数(万人)：</label>
+                        </div>
+                        <div class="col-sm-8 form-group">
+                            <input type="text" class="form-control" id="ylfvrs" name="ylfvrs" placeholder="">
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-sm-4" style="padding-left:0;padding-right: 0;">
+                            <label class="control-label">计划生育率(%)：</label>
+                        </div>
+                        <div class="col-sm-8 form-group">
+                            <input type="text" class="form-control" id="jhsyl" name="jhsyl" placeholder="">
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-sm-4" style="padding-left:0;padding-right: 0;">
+                            <label class="control-label">独生子女证有效领证率(%)：</label>
+                        </div>
+                        <div class="col-sm-8 form-group">
+                            <input type="text" class="form-control" id="dsziyxlzl" name="dsziyxlzl" placeholder="">
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-sm-4" style="padding-left:0;padding-right: 0;">
+                            <label class="control-label">节育率(%)：</label>
+                        </div>
+                        <div class="col-sm-8 form-group">
+                            <input type="text" class="form-control" id="jyl" name="jyl" placeholder="">
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-sm-4" style="padding-left:0;padding-right: 0;">
+                            <label class="control-label">总和生育率(%)：</label>
+                        </div>
+                        <div class="col-sm-8 form-group">
+                            <input type="text" class="form-control" id="zhsyl" name="zhsyl" placeholder="">
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer" style=" margin-top: 0;">
+                <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
+                <button type="button" data-dismiss="modal" class="btn btn-default" onclick="addData()">保存</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+</div>
+</body>
+</html>

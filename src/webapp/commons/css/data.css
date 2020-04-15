@@ -1,12 +1,15 @@
-body{
+/*普查:census，统计:region*/
+body {
     background-color: #d4d4d4;
 }
-#content{
+
+.content {
     margin: 30px 15px 0px 15px;
     background-color: white;
     overflow: auto;
     border-radius: 5px;
 }
+
 /*模态框*/
 .modal {
     display: none; /* 默认隐藏 */
@@ -41,5 +44,38 @@ body{
         top: 0;
         opacity: 1
     }
+}
+
+.infobox {
+    height: 50px
+}
+
+.info_title {
+    width: 60%;
+    display: inline-block
+}
+
+.info_content {
+    border-bottom: 1px solid #d4d4d4;
+    width: 35%;
+    display: inline-block;
+    text-align: center;
+}
+
+.infobox span {
+    font-size: 13px;
+}
+
+.title_leftpart {
+    width: 46%;
+    display: inline-block;
+    margin-right: 4%;
+    text-align: center
+}
+
+.title_rightpart {
+    width: 46%;
+    display: inline-block;
+    text-align: center
 }
 

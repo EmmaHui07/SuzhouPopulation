@@ -4,15 +4,15 @@
     <meta charset="UTF-8">
     <title>地图</title>
     <!-- ArcGIS API for JavaScript CSS-->
-    <link rel="stylesheet" href="http://47.100.49.112:18080/arcgis/arcgis_js_v414_api/arcgis_js_api/library/4.14/esri/themes/dark/main.css"/>
-    <link rel="stylesheet" href="http://47.100.49.112:18080/arcgis/arcgis_js_v414_api/arcgis_js_api/library/4.14/esri/themes/light/main.css"/>
+    <!--<link rel="stylesheet" href="http://47.100.49.112:18080/arcgis/arcgis_js_v414_api/arcgis_js_api/library/4.14/esri/themes/dark/main.css"/>-->
+    <!--<link rel="stylesheet" href="http://47.100.49.112:18080/arcgis/arcgis_js_v414_api/arcgis_js_api/library/4.14/esri/themes/light/main.css"/>-->
     <!--<link rel="stylesheet" href="https://js.arcgis.com/4.14/esri/themes/light/main.css"/>-->
-    <!--<link rel="stylesheet" href="http://localhost/arcgis_js_v414_api/arcgis_js_api/library/4.14/esri/css/main.css">-->
 
+    <link rel="stylesheet" href="https://js.arcgis.com/3.31/esri/css/esri.css">
     <!-- ArcGIS API for JavaScript -->
-    <script type="text/javascript" src="http://47.100.49.112:18080/arcgis/arcgis_js_v414_api/arcgis_js_api/library/4.14/init.js"></script>
+    <script src="https://js.arcgis.com/3.31/"></script>
+    <!--<script type="text/javascript" src="http://47.100.49.112:18080/arcgis/arcgis_js_v414_api/arcgis_js_api/library/4.14/init.js"></script>-->
     <!--<script type="text/javascript" src="https://js.arcgis.com/4.14"></script>-->
-    <!--<script type="text/javascript" src="http://localhost/arcgis_js_v414_api/arcgis_js_api/library/4.14/init.js"></script>-->
 
 
     <script src="commons/js/jquery/jquery.min.js"></script>
@@ -61,21 +61,21 @@
             <ul class="cd-accordion-menu animated">
                 <li class="has-children">
                     <input type="checkbox" name ="group-1" id="group-1" checked>
-                    <label for="group-1">苏州市</label>
+                    <label for="group-1" id="szcity">苏州市</label>
                     <ul id="qulist">
                         <!--&lt;!&ndash;吴中区&ndash;&gt;-->
                         <!--<li class="has-children">-->
                         <!--<input type="checkbox" name ="sub-group-1" id="sub-group-1">-->
-                        <!--<label for="sub-group-1">吴中区</label>-->
+                        <!--<label for="sub-group-1" class="district">吴中区</label>-->
 
                         <!--<ul>-->
-                        <!--<li><a href="#0" >镇1</a></li>-->
+                        <!--<li class="town"><a href="#0" >镇1</a></li>-->
                         <!--<li><a href="#0" >镇2</a></li>-->
                         <!--<li><a href="#0" >镇3</a></li>-->
                         <!--</ul>-->
                         <!--</li>-->
 
-                        <!--<li><label>13</label></li>-->
+                        <!--&lt;!&ndash;<li><label>13</label></li>&ndash;&gt;-->
                     </ul>
                 </li>
             </ul>

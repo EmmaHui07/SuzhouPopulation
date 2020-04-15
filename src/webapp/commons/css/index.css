@@ -20,6 +20,7 @@ body,
     cursor: pointer;
 }
 
+/*按钮*/
 .btn_left_show {
     width: 24px;
     height: 49px;
@@ -110,7 +111,7 @@ a {
     margin: auto;
 }
 
-/*left*/
+/*left 菜单*/
 .leftsidebar_box {
     width: 15%;
     overflow: visible !important;

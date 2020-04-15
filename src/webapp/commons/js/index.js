@@ -1,5 +1,7 @@
 $(function () {
+    changeIframe('大屏');
     initToolbar();
+    //setIframeHeight($('#iframe'));
 });
 
 function showMap() {
@@ -12,17 +14,31 @@ function changeIframe(menuName) {
         case "普查数据台账":
             $("#iframe_map").css("display","none");
             $("#iframe").css("display","inline-block");
-            $("#iframe").attr("src","./data.html");
+            $("#iframe").attr("src","./censusData.html");
             break;
         case "统计数据台账":
             $("#iframe_map").css("display","none");
             $("#iframe").css("display","inline-block");
-            $("#iframe").attr("src","./data.html");
+            $("#iframe").attr("src","./regionData.html");
+            break;
+        case "大屏":
+            $("#iframe_map").css("display","none");
+            $("#iframe").css("display","inline-block");
+            $("#iframe").attr("src","./bigscreen.html");
             break;
 
     }
 }
 window.changeIframe=changeIframe;
+
+function setIframeHeight(iframe) {
+    if (iframe) {
+        var iframeWin = iframe.contentWindow;
+        if (iframeWin.document.body) {
+            iframe.height = iframeWin.document.documentElement.scrollHeight || iframeWin.document.body.scrollHeight;
+        }
+    }
+};
 
 //主页左侧下拉菜单
 function initToolbar() {

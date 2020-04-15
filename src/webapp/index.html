@@ -51,10 +51,10 @@
     <div id="left_part" style="overflow:auto">
         <div id="leftbar" class="leftsidebar_box">
             <div class="line"></div>
-            <!--地图-->
-            <dl class="main_dl" id="item_map">
-                <dt class="main_dt" onclick="showMap()">地图</dt>
-            </dl>
+            <!--&lt;!&ndash;地图&ndash;&gt;-->
+            <!--<dl class="main_dl" id="item_map">-->
+                <!--<dt class="main_dt" onclick="showMap()">地图</dt>-->
+            <!--</dl>-->
             <!--数据台账-->
             <dl class="main_dl" id="item_basedata">
                 <dt class="main_dt">数据台账<img class="main_img" src="commons/image/index/select_xl01.png"></dt>
@@ -64,12 +64,7 @@
             <!--统计分析-->
             <dl class="main_dl" id="item_dataAnalyse">
                 <dt class="main_dt" onclick="changeIframe('统计分析')">统计分析<img class="main_img" src="commons/image/index/select_xl01.png"></dt>
-            </dl>
-            <!--系统管理-->
-            <dl class="main_dl" id="item_user">
-                <dt class="main_dt">系统管理<img class="main_img" src="commons/image/index/select_xl01.png"></dt>
-                <dd class="main_dd">个人信息</dd>
-                <dd class="main_dd">用户管理</dd>
+                <dd class="main_dd" onclick="changeIframe('大屏')">大屏</dd>
             </dl>
         </div>
 
@@ -79,7 +74,7 @@
     <!--右半部分-->
     <div id="right_part" class="right_normal">
         <div id="content">
-            <iframe id="iframe_map" frameborder="0" src="map.html" style="display: block"></iframe>
+            <!--<iframe id="iframe_map" frameborder="0" src="map.html" style="display: block"></iframe>-->
             <iframe id="iframe"     frameborder="0" style="display: none"></iframe>
         </div>
     </div>
